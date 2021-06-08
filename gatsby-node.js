@@ -4,39 +4,50 @@ const fs = require('fs')
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
-    query {
-      allNotionPage {
-        nodes {
-          id
-          properties {
-            Tags {
-              multi_select {
-                name
+  let result
+
+  try {
+    result = await graphql(`
+      query {
+        allNotionPage {
+          nodes {
+            id
+            properties {
+              Tags {
+                multi_select {
+                  name
+                }
               }
-            }
-            Thumbnail {
-              url
-            }
-            Body {
-              rich_text {
-                plain_text
+              Thumbnail {
+                url
               }
-            }
-            Name {
-              title {
-                plain_text
+              Short_Desc {
+                rich_text {
+                  plain_text
+                }
+              }
+              Body {
+                rich_text {
+                  plain_text
+                }
+              }
+              Name {
+                title {
+                  plain_text
+                }
               }
             }
           }
         }
       }
-    }
-  `)
+    `)
+  } catch (e) {
+    console.error(e.message)
+  }
 
   // Check for any errors
-  if (result.errors) {
-    console.error(result.errors)
+  if (result.errors || !result.data) {
+    throw new Error('unable to get data')
   }
 
   // Access query results via object destructuring
@@ -69,6 +80,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/portfolio`,
     component: path.resolve(`./src/templates/projects-template.js`),
-    context: [...formattedNodes],
+    context: {
+      projects: [...formattedNodes],
+    },
   })
 }

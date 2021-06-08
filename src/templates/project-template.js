@@ -4,8 +4,9 @@ import Banner from '../components/banner'
 import styled from 'styled-components'
 
 const ProjectsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 50px 0;
+  max-width: 900px;
+  margin: 0 auto;
 `
 
 const ProjectContainer = styled.div`
@@ -47,10 +48,11 @@ const PortfolioPage = ({
   },
 }) => {
   const data = useMemo(() => {
-    const { Body, Name, Tags, Thumbnail } = properties
+    const { Body, Short_Desc, Name, Tags, Thumbnail } = properties
     return {
-      Body: Body.rich_text[0].plain_text,
+      Body: Body.rich_text[0].plain_text.split('\n'),
       Name: Name.title[0].plain_text,
+      Short_Desc: Short_Desc.rich_text[0].plain_text,
       Tags,
       Thumbnail: Thumbnail.url,
     }
@@ -58,8 +60,12 @@ const PortfolioPage = ({
 
   return (
     <Layout>
-      <Banner title={data.Name} cta={false} subTitle={data.Body} />
-      <ProjectsContainer></ProjectsContainer>
+      <Banner title={data.Name} cta={false} subTitle={data.Short_Desc} />
+      <ProjectsContainer>
+        {data.Body.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
+      </ProjectsContainer>
     </Layout>
   )
 }
