@@ -20,40 +20,40 @@ class HomeIndex extends React.Component {
             <article
               id="first-tile"
               style={{
-                backgroundImage: `url("/static/banner.svg")`,
+                backgroundImage: `url("/banner.svg")`,
                 backgroundSize: 'contain',
               }}
             >
               <Link to="/" className="link primary"></Link>
             </article>
-            <article style={{ backgroundImage: `url("/static/design.jpg")` }}>
+            <article style={{ backgroundImage: `url("/peaches.png")` }}>
               <header className="major">
                 <h3>My Latest Work</h3>
-                <p>feugiat amet tempus</p>
+                <p>Peaches Redesign | Figma</p>
               </header>
             </article>
-            <article style={{ backgroundImage: `url("/static/desk.jpg")` }}>
+            <article style={{ backgroundImage: `url("/desk.jpg")` }}>
               <header className="major">
                 <h3>Illustrations</h3>
-                <p>Lorem etiam nullam</p>
+                <p>Illustration projects I have worked on</p>
               </header>
             </article>
-            <article style={{ backgroundImage: `url("/static/coffee.jpg")` }}>
+            <article style={{ backgroundImage: `url("/coffee.jpg")` }}>
               <header className="major">
                 <h3>UX Design</h3>
-                <p>Nisl sed aliquam</p>
+                <p>UX Design projects I have worked on</p>
               </header>
             </article>
-            <article style={{ backgroundImage: `url("/static/desk2.jpg")` }}>
+            <article style={{ backgroundImage: `url("/about.jpg")` }}>
               <header className="major">
                 <h3>About Me</h3>
-                <p>Ipsum dolor sit amet</p>
+                <p>Everything about me and my journey so far</p>
               </header>
             </article>
-            <article style={{ backgroundImage: `url("/static/design.jpg")` }}>
+            <article style={{ backgroundImage: `url("/contact.jpg")` }}>
               <header className="major">
-                <h3>Etiam</h3>
-                <p>Feugiat amet tempus</p>
+                <h3>Contact Me</h3>
+                <p>Where to find me and how to get in touch</p>
               </header>
             </article>
           </section>

@@ -34,8 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  fs.writeFileSync('data.json', JSON.stringify(result))
-
   // Check for any errors
   if (result.errors) {
     console.error(result.errors)
@@ -46,18 +44,21 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pageTemplate = path.resolve(`./src/templates/project-template.js`)
 
+  const lol = []
   allNotionPage.nodes.forEach(node => {
-    console.log(node)
-    if (node.Name && node.Name.title.length > 0) {
+    if (node.properties.Name && node.properties.Name.title.length > 0) {
       createPage({
-        path: `/portfolio/${node.Name.title[0].plain_text.toLowerCase()}`,
+        path: `/portfolio/${node.properties.Name.title[0].plain_text.toLowerCase()}`,
         component: pageTemplate,
         context: {
           id: node.id,
         },
       })
     }
+    lol.push(node)
   })
+
+  fs.writeFileSync('data.json', JSON.stringify(lol))
 
   createPage({
     path: `/portfolio`,

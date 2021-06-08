@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-// img
-import Logo from '../../public/static/logo.svg'
 
 const HeaderContainer = styled.header`
   padding: 15px;
@@ -15,7 +13,7 @@ const HeaderContainer = styled.header`
 
 const Header = props => (
   <HeaderContainer id="header" className="alt">
-    <img id="logo" src="/static/logo.svg" />
+    <img id="logo" src="/logo.svg" />
     <nav>
       <a
         className="menu-link"
