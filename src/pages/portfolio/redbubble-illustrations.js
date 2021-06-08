@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
-import Layout from '../components/layout'
-import Banner from '../components/banner'
+import Layout from '../../components/layout'
+import Banner from '../../components/banner'
 import styled from 'styled-components'
+const JSON_DATA = require('../../../static/projects.json')
 
 const ProjectsContainer = styled.div`
   padding: 50px 10px;
@@ -46,30 +47,25 @@ const TagItem = styled.h4`
   color: #fff;
 `
 
-const PortfolioPage = ({
-  pageContext: {
-    data: { properties },
-  },
-}) => {
+const RedBubblePage = () => {
   const data = useMemo(() => {
-    const { Body, Short_Desc, Name, Tags, Thumbnail } = properties
-    return {
-      Body: Body.rich_text[0].plain_text.split('\n'),
-      Name: Name.title[0].plain_text,
-      Short_Desc: Short_Desc.rich_text[0].plain_text,
-      Tags: Tags.multi_select,
-      Thumbnail: Thumbnail.url,
-    }
-  }, [properties])
+    return JSON_DATA.projects.find(
+      prj =>
+        prj.name
+          .toLowerCase()
+          .split(' ')
+          .join('-') === 'redbubble-illustrations'
+    )
+  }, [JSON_DATA])
 
   return (
     <Layout>
-      <Banner title={data.Name} cta={false} subTitle={data.Short_Desc}>
-        {data.Tags.map((tag, index) => (
+      <Banner title={data.name} cta={false} subTitle={data.desc}>
+        {data.tags.map((tag, index) => (
           <>
             {' '}
             <TagItem>{tag.name}</TagItem>{' '}
-            {data.Tags.length - 1 !== index && (
+            {data.tags.length - 1 !== index && (
               <h4 style={{ color: '#8d82c4' }}> | </h4>
             )}
           </>
@@ -80,12 +76,22 @@ const PortfolioPage = ({
           Go Back
         </button>
         <br /> <br />
-        {data.Body.map(paragraph => (
-          <p>{paragraph}</p>
-        ))}
+        <p>
+          {' '}
+          Redbubble is a platform where designers can share their work and earn
+          a small commission if an item with their design is sold.
+        </p>
+        <p>
+          My designs on Redbubble incluse various collections, such as Vine
+          references, products for dog lovers and contemporary designs.
+        </p>
+        <p>
+          Every design can be printed on various products, such as T-shirts,
+          bags and mugs.
+        </p>
       </ProjectsContainer>
     </Layout>
   )
 }
 
-export default PortfolioPage
+export default RedBubblePage
