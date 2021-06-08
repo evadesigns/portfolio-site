@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import styled from 'styled-components'
+import { navigate } from 'gatsby'
 
 const ProjectsContainer = styled.div`
   display: grid;
@@ -49,8 +50,6 @@ const TagContainer = styled.div`
 `
 
 const PortfolioPage = ({ pageContext: { projects } }) => {
-  console.log(projects)
-
   if (!projects || projects.length === 0) return <div>loading...</div>
   return (
     <Layout>
@@ -63,24 +62,22 @@ const PortfolioPage = ({ pageContext: { projects } }) => {
               ({
                 url,
                 data: {
-                  properties: { Body, Name, Tags, Thumbnail },
+                  properties: { Body, Name, Tags, Thumbnail, Short_Desc },
                 },
-              }) => {
-                return (
-                  <ProjectContainer>
-                    <TagContainer>
-                      {Tags.multi_select.map(({ name }) => (
-                        <h5>{name}</h5>
-                      ))}
-                    </TagContainer>
-                    <h1>{Name.title[0].plain_text}</h1>
-                    {Thumbnail && Thumbnail.url ? (
-                      <img src={Thumbnail.url} />
-                    ) : null}
-                    <p>{Body.rich_text[0].plain_text}</p>
-                  </ProjectContainer>
-                )
-              }
+              }) => (
+                <ProjectContainer onClick={() => navigate(url)}>
+                  <TagContainer>
+                    {Tags.multi_select.map(({ name }) => (
+                      <h5>{name}</h5>
+                    ))}
+                  </TagContainer>
+                  <h1>{Name.title[0].plain_text}</h1>
+                  {Thumbnail && Thumbnail.url ? (
+                    <img src={Thumbnail.url} />
+                  ) : null}
+                  <p>{Short_Desc.rich_text[0].plain_text}</p>
+                </ProjectContainer>
+              )
             )}
         </ProjectsContainer>
       </Body>

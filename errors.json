@@ -1,0 +1,1 @@
+[{"message":"Cannot query field \"allNotionPage\" on type \"Query\". Did you mean \"allSitePage\"?","locations":[{"line":3,"column":7}]}]

@@ -8,19 +8,25 @@ const HeaderContainer = styled.header`
   img {
     z-index: 1000;
     max-width: 70px;
+    min-height: 70px;
+  }
+
+  img:hover {
+    cursor: pointer;
   }
 `
 
-const Header = props => (
+const Header = ({ onToggleMenu, children }) => (
   <HeaderContainer id="header" className="alt">
-    <img id="logo" src="/logo.svg" />
+    <img
+      id="logo"
+      src="/logo.svg"
+      onClick={() => (window.location.href = '/')}
+    />
     <nav>
-      <a
-        className="menu-link"
-        onClick={props.onToggleMenu}
-        href="javascript:;"
-      ></a>
+      <a className="menu-link" onClick={onToggleMenu} href="javascript:;"></a>
     </nav>
+    {children}
   </HeaderContainer>
 )
 

@@ -18,23 +18,23 @@ exports.createPages = async ({ graphql, actions }) => {
                   name
                 }
               }
-              Thumbnail {
-                url
+            }
+            Thumbnail {
+              url
+            }
+            Short_Desc {
+              rich_text {
+                plain_text
               }
-              Short_Desc {
-                rich_text {
-                  plain_text
-                }
+            }
+            Body {
+              rich_text {
+                plain_text
               }
-              Body {
-                rich_text {
-                  plain_text
-                }
-              }
-              Name {
-                title {
-                  plain_text
-                }
+            }
+            Name {
+              title {
+                plain_text
               }
             }
           }
