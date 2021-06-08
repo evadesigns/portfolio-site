@@ -44,24 +44,31 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pageTemplate = path.resolve(`./src/templates/project-template.js`)
 
-  const lol = []
+  const formattedNodes = []
+
   allNotionPage.nodes.forEach(node => {
     if (node.properties.Name && node.properties.Name.title.length > 0) {
+      const url = `/portfolio/${node.properties.Name.title[0].plain_text
+        .toLowerCase()
+        .split(' ')
+        .join('-')}`
+
+      const ctx = {
+        data: node,
+        url,
+      }
+      formattedNodes.push(ctx)
       createPage({
-        path: `/portfolio/${node.properties.Name.title[0].plain_text.toLowerCase()}`,
+        path: url,
         component: pageTemplate,
-        context: {
-          id: node.id,
-        },
+        context: ctx,
       })
     }
-    lol.push(node)
   })
-
-  fs.writeFileSync('data.json', JSON.stringify(lol))
 
   createPage({
     path: `/portfolio`,
     component: path.resolve(`./src/templates/projects-template.js`),
+    context: [...formattedNodes],
   })
 }

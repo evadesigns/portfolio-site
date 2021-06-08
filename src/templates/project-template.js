@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Layout from '../components/layout'
+import Banner from '../components/banner'
 import styled from 'styled-components'
 
 const ProjectsContainer = styled.div`
@@ -40,11 +41,24 @@ const TagContainer = styled.div`
   }
 `
 
-const PortfolioPage = props => {
-  console.log(props)
-  return <div>wooo</div>
+const PortfolioPage = ({
+  pageContext: {
+    data: { properties },
+  },
+}) => {
+  const data = useMemo(() => {
+    const { Body, Name, Tags, Thumbnail } = properties
+    return {
+      Body: Body.rich_text[0].plain_text,
+      Name: Name.title[0].plain_text,
+      Tags,
+      Thumbnail: Thumbnail.url,
+    }
+  }, [properties])
+
   return (
     <Layout>
+      <Banner title={data.Name} cta={false} subTitle={data.Body} />
       <ProjectsContainer></ProjectsContainer>
     </Layout>
   )

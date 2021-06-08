@@ -48,39 +48,45 @@ const TagContainer = styled.div`
   }
 `
 
-const PortfolioPage = ({
-  data: {
-    allNotionPage: { nodes: projects },
-  },
-}) => {
+const PortfolioPage = ({ pageContext: projects }) => {
+  console.log(projects)
+
+  if (!projects || projects.length === 0) return <div>loading...</div>
   return (
     <Layout>
       <Body>
         <h1>My Portfolio</h1>
         <ProjectsContainer>
-          {projects.map(({ properties: { Body, Name, Tags, Thumbnail } }) => {
-            return (
-              <ProjectContainer>
-                <TagContainer>
-                  {Tags.multi_select.map(({ name }) => (
-                    <h5>{name}</h5>
-                  ))}
-                </TagContainer>
-                <h1>{Name.title[0].plain_text}</h1>
-                {Thumbnail && Thumbnail.url ? (
-                  <img src={Thumbnail.url} />
-                ) : null}
-                <p>{Body.rich_text[0].plain_text}</p>
-              </ProjectContainer>
-            )
-          })}
+          {projects.map(
+            ({
+              url,
+              data: {
+                properties: { Body, Name, Tags, Thumbnail },
+              },
+            }) => {
+              return (
+                <ProjectContainer>
+                  <TagContainer>
+                    {Tags.multi_select.map(({ name }) => (
+                      <h5>{name}</h5>
+                    ))}
+                  </TagContainer>
+                  <h1>{Name.title[0].plain_text}</h1>
+                  {Thumbnail && Thumbnail.url ? (
+                    <img src={Thumbnail.url} />
+                  ) : null}
+                  <p>{Body.rich_text[0].plain_text}</p>
+                </ProjectContainer>
+              )
+            }
+          )}
         </ProjectsContainer>
       </Body>
     </Layout>
   )
 }
 
-export const portfolioQuery = graphql`
+/* export const portfolioQuery = graphql`
   query notionData {
     allNotionPage {
       nodes {
@@ -108,6 +114,6 @@ export const portfolioQuery = graphql`
       }
     }
   }
-`
+` */
 
 export default PortfolioPage
