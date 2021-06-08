@@ -3,6 +3,7 @@ module.exports = {
     title: 'Eva Designs',
     author: 'Eva Bienasz',
     description: 'Product & UX Design by Eva Bienasz',
+    siteUrl: 'https://evadesigns.github.io/portfolio-site',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
