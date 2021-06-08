@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: 'https://evadesigns.github.io/portfolio-site',
   },
   plugins: [
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -21,13 +22,5 @@ module.exports = {
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
-    {
-      resolve: `gatsby-source-notion-db`,
-      options: {
-        token: 'secret_5MaKaF4kPfPhHbKdaPeoyBXf7OkVA4ZLufLEUmAyACh',
-        databaseId: '8dfeb11d6db04c748d5ef47cfc2b6434',
-        max: 50,
-      },
-    },
   ],
 }
