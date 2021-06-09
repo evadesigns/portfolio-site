@@ -43,6 +43,12 @@ const TagContainer = styled.div`
   }
 `
 
+const BlogImage = styled.img`
+  width: 100%;
+  height: auto;
+  padding: 20px;
+`
+
 const TagItem = styled.h4`
   color: #fff;
 `
@@ -103,6 +109,7 @@ const PeachesPage = () => {
           already knew which features I found particularly inconvenient.
         </p>
         <h1>Problem</h1>
+        <BlogImage src="/problem.png" />
         <p>
           My app, called Peaches, originally had a hamburger menu placed in the
           top left corner and a main menu on the top right, alike many other
@@ -129,6 +136,7 @@ const PeachesPage = () => {
           WCAG AA and WCAG AAA criterions.
         </p>
         <h1>Solution and goals</h1>
+        <BlogImage src="/solution.png" />
         <p>
           In my app redesign, I implemented a bottom menu, which is easily
           accessible from all pages and only left the search button on top, so
