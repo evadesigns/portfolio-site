@@ -84,34 +84,4 @@ const PortfolioPage = () => {
   )
 }
 
-/* export const portfolioQuery = graphql`
-  query notionData {
-    allNotionPage {
-      nodes {
-        id
-        properties {
-          Tags {
-            multi_select {
-              name
-            }
-          }
-          Thumbnail {
-            url
-          }
-          Body {
-            rich_text {
-              plain_text
-            }
-          }
-          Name {
-            title {
-              plain_text
-            }
-          }
-        }
-      }
-    }
-  }
-` */
-
 export default PortfolioPage
