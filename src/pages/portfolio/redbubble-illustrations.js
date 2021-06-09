@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Layout from '../../components/layout'
-import Banner from '../../components/banner'
+import Banner from '../../components/Banner'
 import styled from 'styled-components'
 const JSON_DATA = require('../../../static/projects.json')
 
