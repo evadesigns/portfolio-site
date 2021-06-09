@@ -95,6 +95,13 @@ const FlarePage = () => {
         <h5>Links & Demos</h5>
         <ul>
           <li>
+            Storybook JS Playground of the components:{' '}
+            <a href="http://flare.evadesigns.co.uk/">
+              http://flare.evadesigns.co.uk/{' '}
+            </a>
+          </li>
+
+          <li>
             Buttons preview:{' '}
             <a href="http://bit.ly/flare_buttons_preview ">
               http://bit.ly/flare_buttons_preview{' '}

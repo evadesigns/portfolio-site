@@ -13,35 +13,60 @@ const ProjectsContainer = styled.div`
 `
 
 const ProjectContainer = styled.div`
+  padding: 10px;
   margin: 10px;
   border: 2px solid #fff;
-  padding: 10px;
   max-width: 400px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 5px;
   color: #242943;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+
+  &:hover {
+    background: #f2f2f2;
+    cursor: pointer;
+  }
 
   h1 {
     color: #242943;
+    font-size: 1.5rem;
   }
 
   img {
     border-radius: 5px;
-    max-width: 200px;
+    max-width: 330px;
+    width: 100%;
+    height: auto;
   }
 `
 
+const CTA = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  h5 {
+    color: #242943;
+    margin: 0 5px 0 0;
+    font-size: 1rem;
+  }
+  img {
+    max-width: 50px;
+    margin-left: 10px;
+  }
+`
+
+const CardBody = styled.div``
+
 const Body = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
+  margin: 50px auto 0 auto;
 `
 
 const TagContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-gap: 5px;
+  grid-gap: 10px;
 
   h5 {
     color: #fff;
@@ -73,9 +98,15 @@ const PortfolioPage = () => {
                   <h5>{tag}</h5>
                 ))}
               </TagContainer>
-              <h1>{name}</h1>
-              <img src={thumbnail} />
-              <p>{desc}</p>
+              <CardBody>
+                <h1>{name}</h1>
+                <img src={thumbnail} />
+                <p>{desc}</p>
+              </CardBody>
+              <CTA>
+                <h5>Show Project</h5>
+                <img src="/forward.svg" />
+              </CTA>
             </ProjectContainer>
           ))}
         </ProjectsContainer>

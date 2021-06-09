@@ -96,3 +96,7 @@ h5 {
 .colourful-cards:hover {
   cursor: pointer;
 }
+
+html {
+  scroll-behavior: smooth !important;
+}

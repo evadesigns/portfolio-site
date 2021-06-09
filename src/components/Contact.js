@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Contact = props => (
-  <section id="contact">
+  <section id="contact" ref={props.contactRef}>
     <div className="inner">
       <section>
-        <form method="post" action="#">
+        <form action="https://formspree.io/f/xayajydy" method="POST">
           <div className="field half first">
             <label htmlFor="name">Name</label>
             <input type="text" name="name" id="name" />
