@@ -18,19 +18,20 @@ function HomeIndex() {
       <div id="main">
         <section id="one" className="tiles">
           <article
+            onClick={() => window.open('/eva-bienasz-cv.pdf', '_blank')}
             className="colourful-cards"
-            id="first-tile"
             style={{
-              backgroundImage: `url("/banner.svg")`,
-              backgroundSize: 'contain',
+              backgroundImage: `url("/cv-image.jpg")`,
             }}
           >
-            <Link to="/" className="link primary"></Link>
+            <header className="major">
+              <h3>View My CV</h3>
+            </header>
           </article>
           <article
             className="colourful-cards"
             onClick={() => navigate('/portfolio/peaches-app-redesign')}
-            style={{ backgroundImage: `url("/peaches.png")` }}
+            style={{ backgroundImage: `url("/latest-work.jpg")` }}
           >
             <header className="major">
               <h3>My Latest Work</h3>
@@ -39,7 +40,7 @@ function HomeIndex() {
           </article>
           <article
             className="colourful-cards"
-            style={{ backgroundImage: `url("/desk.jpg")` }}
+            style={{ backgroundImage: `url("/illustrations.jpg")` }}
             onClick={() => navigate('/portfolio')}
           >
             <header className="major">
@@ -50,7 +51,7 @@ function HomeIndex() {
           <article
             className="colourful-cards"
             onClick={() => navigate('/portfolio')}
-            style={{ backgroundImage: `url("/coffee.jpg")` }}
+            style={{ backgroundImage: `url("/ux-design.jpg")` }}
           >
             <header className="major">
               <h3>UX Design</h3>

@@ -104,7 +104,7 @@ const PortfolioPage = () => {
                 <p>{desc}</p>
               </CardBody>
               <CTA>
-                <h5>Show Project</h5>
+                <h5>View Project</h5>
                 <img src="/forward.svg" />
               </CTA>
             </ProjectContainer>
